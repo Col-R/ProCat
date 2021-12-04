@@ -1,12 +1,17 @@
 package com.cole.procat.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,6 +31,14 @@ public class Product {
 	private Date createdAt;
 	@DateTimeFormat(pattern="yyy-MM-DD HH:mm:ss")
 	private Date updatedAt;
+	
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(
+		name = "categories_products",
+		joinColumns = @JoinColumn(name = "products_id"),
+		inverseJoinColumns = @JoinColumn(name="categories_id")
+	)
+	private List<Category> categoriesOfProducts;
 	
 	
 	public Product() {
