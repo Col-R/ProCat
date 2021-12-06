@@ -56,6 +56,15 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+
+	public List<Product> getProductsInCategory() {
+		return productsInCategory;
+	}
+
+	public void setProductsInCategory(List<Product> productsInCategory) {
+		this.productsInCategory = productsInCategory;
+	}
 
 	public Date getCreatedAt() {
 		return createdAt;

@@ -83,6 +83,17 @@ public class Product {
 	public void setPrice(String price) {
 		this.price = price;
 	}
+	 
+
+
+	public List<Category> getCategoriesOfProducts() {
+		return categoriesOfProducts;
+	}
+
+
+	public void setCategoriesOfProducts(List<Category> categoriesOfProducts) {
+		this.categoriesOfProducts = categoriesOfProducts;
+	}
 
 
 	public Date getCreatedAt() {
