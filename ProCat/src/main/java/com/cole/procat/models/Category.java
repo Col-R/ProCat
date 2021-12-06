@@ -38,7 +38,7 @@ public class Category {
 		joinColumns = @JoinColumn(name = "category_id"),
 		inverseJoinColumns = @JoinColumn(name="product_id")
 	)
-	private List <Product> productsInCategory;
+	private List <Product> products;
 	
 	@PrePersist
 	protected void onCreate() {
@@ -68,14 +68,12 @@ public class Category {
 	}
 	
 
-	public List<Product> getProductsInCategory() {
-		return productsInCategory;
+	public List<Product> getProducts() {
+		return products;
 	}
-
-	public void setProductsInCategory(List<Product> productsInCategory) {
-		this.productsInCategory = productsInCategory;
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
-
 	public Date getCreatedAt() {
 		return createdAt;
 	}
