@@ -11,6 +11,19 @@
 <title>New Category</title>
 </head>
 <body>
+<div class = "container">
+<div class = "row">
+<h1>New Category</h1>
+</div>
+<div class = "row">
+<form:form method = "POST" action = "/addCategory" modelAttribute = "category">
+	<form:label path="name">Name</form:label> <!-- Path matches attribute name -->
+	<form:errors path = "name"></form:errors>
+	<form:input type = "text" path="name"/>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form:form>
+</div>
+</div>
 
 </body>
 </html>

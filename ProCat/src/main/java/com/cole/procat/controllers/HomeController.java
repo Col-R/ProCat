@@ -15,6 +15,7 @@ import com.cole.procat.services.ProductService;
 public class HomeController {
 	@Autowired
 	private CategoryService cService;
+	@Autowired
 	private ProductService pService;
 	
 	@GetMapping("/products/new")
@@ -29,7 +30,7 @@ public class HomeController {
 	
 	
 	@GetMapping("/categories/new")
-	public String newCategory() {
+	public String newCategory(@ModelAttribute("category")Category category) {
 		return "add_category.jsp";
 	}
 	@PostMapping("/addCategory")
