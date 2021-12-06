@@ -15,23 +15,23 @@
 <div class = "row">
 <h1>New Product</h1>
 </div>
-<div class = "row">
+<div class = "mb-3 row">
 <form:form method = "POST" action = "/addProduct" modelAttribute = "product">
-<div class = "form-control">
+<div class = "mb-2">
 	<form:label path="name">Name</form:label> <!-- Path matches attribute name -->
 	<form:errors path = "name"></form:errors>
-	<form:input type = "text" path="name"/>
+	<form:input class = "form-control" type = "text" path="name"/>
 </div>
-<div class = "form-control">
+<div class = "mb-2">
 	<form:label path="description">Description</form:label> <!-- Path matches attribute name -->
 	<form:errors path = "description"></form:errors>
-	<form:input type = "text" path="description"/>
+	<form:input class ="form-control" type = "text" path="description"/>
 
 </div>
-<div class = "form-control">	
+<div class = "mb-2">	
 	<form:label path="price">Price</form:label> <!-- Path matches attribute name -->
 	<form:errors path = "price"></form:errors>
-	<form:input type = "text" path="price"/>
+	<form:input class ="form-control" type = "text" path="price"/>
 </div>	
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form:form>

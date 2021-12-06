@@ -15,11 +15,11 @@
 <div class = "row">
 <h1>New Category</h1>
 </div>
-<div class = "row">
+<div class = "mb-3 row">
 <form:form method = "POST" action = "/addCategory" modelAttribute = "category">
 	<form:label path="name">Name</form:label> <!-- Path matches attribute name -->
 	<form:errors path = "name"></form:errors>
-	<form:input type = "text" path="name"/>
+	<form:input class ="form-control" type = "text" path="name"/>
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form:form>
 </div>
