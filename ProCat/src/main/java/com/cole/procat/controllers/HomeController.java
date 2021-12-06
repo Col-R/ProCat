@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.cole.procat.models.Category;
 import com.cole.procat.models.Product;
 import com.cole.procat.services.CategoryService;
 import com.cole.procat.services.ProductService;
@@ -27,8 +28,13 @@ public class HomeController {
 	}
 	
 	
-	@GetMapping("categories/new")
+	@GetMapping("/categories/new")
 	public String newCategory() {
 		return "add_category.jsp";
+	}
+	@PostMapping("/addCategory")
+	public String addCategory(@ModelAttribute("category")Category category) {
+		this.cService.createCategory(category);
+		return "redirect:/categories/new";
 	}
 }
