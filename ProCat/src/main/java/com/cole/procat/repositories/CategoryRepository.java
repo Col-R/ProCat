@@ -11,5 +11,4 @@ import com.cole.procat.models.Product;
 @Repository
 public interface CategoryRepository extends CrudRepository<Category, Long>{
 	List<Category> findAll();
-	List <Category> findByProductsNotContains(Product product);
 }

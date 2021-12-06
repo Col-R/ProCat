@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -24,7 +26,7 @@ public class Product {
 	private Long id;
 	private String name;
 	private String description;
-	private String price;
+	private Double price;
 	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyy-MM-DD HH:mm:ss")
@@ -40,7 +42,14 @@ public class Product {
 	)
 	private List<Category> categoriesOfProducts;
 	
-	
+	@PrePersist
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
+	@PreUpdate
+	protected void onUpdate() {
+		this.updatedAt = new Date();
+	}
 	public Product() {
 	}
 
@@ -75,12 +84,12 @@ public class Product {
 	}
 
 
-	public String getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
 
-	public void setPrice(String price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 	 
