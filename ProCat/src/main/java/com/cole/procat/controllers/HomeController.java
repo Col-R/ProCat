@@ -56,6 +56,21 @@ public class HomeController {
 		this.pService.addCategoryToProduct(productToAdd, categoryToAdd);
 		return "redirect:/products/{id}";
 	}
+	
+	@GetMapping("categories/{id}")
+	public String showCategory(@PathVariable("id")Long id, Model viewModel) {
+		Category catShow = this.cService.getOneCategory(id);
+		viewModel.addAttribute("category", catShow);
+		viewModel.addAttribute("notInCat", this.pService.findProdNotInCat(catShow));
+		return "show_category.jsp";
+	}
+	@PostMapping("addProd/{id}")
+	public String showProdToCat(@PathVariable("id")Long cat_id, @RequestParam("prod")Long product_id) {
+		Category categoryToAdd = this.cService.getOneCategory(cat_id);
+		Product productToAdd = this.pService.getOneProduct(product_id);
+		this.cService.addProductToCategory(productToAdd, categoryToAdd);
+		return "redirect:/categories/{id}";
+	}
 
 }
 

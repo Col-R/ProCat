@@ -13,11 +13,31 @@
 <body>
 <div class="container">
   <div class="row">
+    	<div class="col-5 offset-1">
+        	<h1><c:out value = "${category.name}"/></h1>
+        </div>
+  </div>
+  <div class="row">
     <div class="col-5 offset-1">
-      Column
+      <h3>Categories</h3>
+      <ul>
+      	<c:forEach items = "${category.products }" var = "prod">
+      	 <li>${prod.name }</li>
+      	</c:forEach>
+      </ul>
     </div>
     <div class="col-5 offset-1">
-      Column
+    <h3>Add Product</h3>
+    
+      <form method = "POST" action = "/addProd/${category.id }">
+      	<select name = "prod">
+      		<c:forEach items = "${notInCat}" var = "prod">
+      			<option value = "${prod.id }">${prod.name}</option>
+      		</c:forEach>
+      	</select>
+ 	<button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      
     </div>
   </div>
 </div>
