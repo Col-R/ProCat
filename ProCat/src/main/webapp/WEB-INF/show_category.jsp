@@ -11,6 +11,15 @@
 <title>Category Page</title>
 </head>
 <body>
-
+<div class="container">
+  <div class="row">
+    <div class="col-5 offset-1">
+      Column
+    </div>
+    <div class="col-5 offset-1">
+      Column
+    </div>
+  </div>
+</div>
 </body>
 </html>

@@ -28,10 +28,14 @@
 	<form:input class ="form-control" type = "text" path="description"/>
 
 </div>
-<div class = "mb-2">	
+<div class = "mb-2 ">	
 	<form:label path="price">Price</form:label> <!-- Path matches attribute name -->
+	<div class = "input-group">
 	<form:errors path = "price"></form:errors>
-	<form:input class ="form-control" type = "text" path="price"/>
+	<span class="input-group-text">$</span>
+	<form:input class ="form-control" aria-label="Amount (to the nearest dollar)" type = "text" path="price"/>
+	<span class="input-group-text">.00</span>
+	</div>
 </div>	
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form:form>
