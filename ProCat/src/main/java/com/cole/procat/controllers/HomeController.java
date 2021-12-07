@@ -74,12 +74,3 @@ public class HomeController {
 
 }
 
-
-//Commenting out so I can implement mvc forms later
-//<form:form method = "POST" action ="/addCat/${product.id}" modelAttribute = "cat">
-//	<form:select path="notInProd">
-//		<c:forEach items = "${notInProd}" var = "cat">
-//			<option value = "${cat.id }">${cat.name}</option>
-//		</c:forEach>
-//	</form:select>
-//</form:form>
