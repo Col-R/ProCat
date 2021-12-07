@@ -13,7 +13,11 @@
 <body>
 
 <div class="container">
-<h1><c:out value = "${product.name}"/></h1>
+  <div class="row">
+    	<div class="col-5 offset-1">
+        	<h1><c:out value = "${product.name}"/></h1>
+        </div>
+  </div>
   <div class="row">
     <div class="col-5 offset-1">
       <h3>Categories</h3>

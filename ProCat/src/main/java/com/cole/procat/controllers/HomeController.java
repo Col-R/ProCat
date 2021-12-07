@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cole.procat.models.Category;
 import com.cole.procat.models.Product;
@@ -48,12 +49,22 @@ public class HomeController {
 		viewModel.addAttribute("product", prodShow);
 		return "show_product.jsp";
 	}
-//	Commenting out so I can implement mvc forms later
-//    <form:form method = "POST" action ="/addCat/${product.id}" modelAttribute = "cat">
-//    	<form:select path="notInProd">
-//    		<c:forEach items = "${notInProd}" var = "cat">
-//    			<option value = "${cat.id }">${cat.name}</option>
-//    		</c:forEach>
-//		</form:select>
-//    </form:form>
+	@PostMapping("/addCat/{id}")
+	public String addCatToProd(@RequestParam("cats")Long cat_id, @PathVariable("id")Long product_id){
+		Product productToAdd = this.pService.getOneProduct(product_id);
+		Category categoryToAdd=this.cService.getOneCategory(cat_id);
+		this.pService.addCategoryToProduct(productToAdd, categoryToAdd);
+		return "redirect:/products/{id}";
+	}
+
 }
+
+
+//Commenting out so I can implement mvc forms later
+//<form:form method = "POST" action ="/addCat/${product.id}" modelAttribute = "cat">
+//	<form:select path="notInProd">
+//		<c:forEach items = "${notInProd}" var = "cat">
+//			<option value = "${cat.id }">${cat.name}</option>
+//		</c:forEach>
+//	</form:select>
+//</form:form>
