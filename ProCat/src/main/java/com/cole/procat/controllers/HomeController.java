@@ -45,6 +45,15 @@ public class HomeController {
 	public String showProduct(@PathVariable("id")Long id, Model viewModel) {
 		Product prodShow = this.pService.getOneProduct(id);
 		viewModel.addAttribute("notInProd", this.cService.findCatNotInProd(prodShow));
+		viewModel.addAttribute("product", prodShow);
 		return "show_product.jsp";
 	}
+//	Commenting out so I can implement mvc forms later
+//    <form:form method = "POST" action ="/addCat/${product.id}" modelAttribute = "cat">
+//    	<form:select path="notInProd">
+//    		<c:forEach items = "${notInProd}" var = "cat">
+//    			<option value = "${cat.id }">${cat.name}</option>
+//    		</c:forEach>
+//		</form:select>
+//    </form:form>
 }
