@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cole.procat.models.Category;
 import com.cole.procat.models.Product;
 import com.cole.procat.repositories.ProductRepository;
 
@@ -23,5 +24,8 @@ public class ProductService {
 	// create product
 	public Product createProduct(Product product) {
 		return this.pRepo.save(product);
+	}
+	public List<Product> findProdNotInCat(Category category){
+		return this.pRepo.findByCategoriesNotContains(category);
 	}
 }
