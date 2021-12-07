@@ -2,8 +2,10 @@ package com.cole.procat.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.cole.procat.models.Category;
@@ -37,5 +39,12 @@ public class HomeController {
 	public String addCategory(@ModelAttribute("category")Category category) {
 		this.cService.createCategory(category);
 		return "redirect:/categories/new";
+	}
+	
+	@GetMapping("products/{id}")
+	public String showProduct(@PathVariable("id")Long id, Model viewModel) {
+		Product prodShow = this.pService.getOneProduct(id);
+		viewModel.addAttribute("notInProd", this.cService.findCatNotInProd(prodShow));
+		return "show_product.jsp";
 	}
 }
